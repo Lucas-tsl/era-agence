@@ -3,8 +3,9 @@ import { ContactCta, FaqList, OfferCard, SectionHeading } from "@/components/ui"
 import { getFaq, getHome, getOffers, getSettings } from "@/content";
 
 export const metadata: Metadata = {
-  title: "Les offres",
-  description: "ERA Identity, ERA Brand, ERA Studio, ERA Brain : personal branding, rebranding, shootings et accompagnement mensuel.",
+  title: "Offres de personal branding et rebranding",
+  description:
+    "ERA Identity, ERA Brand, ERA Studio, ERA Brain : personal branding, rebranding, shootings et accompagnement mensuel. Trouve l'offre faite pour toi.",
 };
 
 export default async function OffresPage() {
@@ -21,7 +22,7 @@ export default async function OffresPage() {
         </div>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {offers.map((offer, index) => (
-            <OfferCard key={offer.slug} offer={offer} index={index} />
+            <OfferCard key={offer.slug} offer={offer} index={index} level={2} />
           ))}
         </div>
       </section>

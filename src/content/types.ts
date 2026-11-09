@@ -43,6 +43,8 @@ export type Offer = {
   format: string;
   price?: string;
   image?: SiteImage;
+  seoTitle?: string;
+  seoDescription?: string;
 };
 
 export type Project = {

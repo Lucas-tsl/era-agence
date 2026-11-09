@@ -3,8 +3,9 @@ import { ContactCta, FaqList, Media, SectionHeading } from "@/components/ui";
 import { getFaq, getHome, getSettings } from "@/content";
 
 export const metadata: Metadata = {
-  title: "L'agence",
-  description: "Margot, fondatrice d'ERA : une agence d'image de marque créative et humaine, née de mille vies dans la mode et la communication.",
+  title: "Qui est Margot, fondatrice de l'agence ERA",
+  description:
+    "Découvre Margot, fondatrice d'ERA : un parcours dans la mode et le luxe, entre Paris, Milan et Cannes, au service de ton image de marque et de ta stratégie.",
 };
 
 const timeline = [
@@ -51,7 +52,7 @@ export default async function AgencePage() {
           {home.steps.map((step, index) => (
             <li key={step.title} className="flex flex-col gap-3 border-t border-brand pt-6">
               <span className="font-display text-6xl text-brand">{String(index + 1).padStart(2, "0")}</span>
-              <h2 className="font-accent text-2xl">{step.title}</h2>
+              <h3 className="font-accent text-2xl">{step.title}</h3>
               <p className="leading-relaxed text-muted">{step.text}</p>
             </li>
           ))}

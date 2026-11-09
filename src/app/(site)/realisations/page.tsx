@@ -4,8 +4,9 @@ import { ProjectCard } from "@/components/ui";
 import { getProjects } from "@/content";
 
 export const metadata: Metadata = {
-  title: "Réalisations",
-  description: "Les projets accompagnés par ERA : personal branding, rebranding, shootings.",
+  title: "Réalisations et projets clients de l'agence",
+  description:
+    "Les projets accompagnés par ERA : personal branding, rebranding de marques et commerces, shootings photo. Découvre comment chaque marque a trouvé son ère.",
 };
 
 export default async function RealisationsPage() {
@@ -19,7 +20,7 @@ export default async function RealisationsPage() {
       {projects.length > 0 ? (
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
+            <ProjectCard key={project.slug} project={project} level={2} />
           ))}
         </div>
       ) : (

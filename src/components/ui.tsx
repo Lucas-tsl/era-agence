@@ -29,13 +29,15 @@ export function SectionHeading({ kicker, title, intro, align = "left" }: { kicke
 
 const offerStyles = ["bg-deep text-on-deep", "bg-brand text-on-deep", "bg-accent text-deep", "bg-soft text-ink border border-line"];
 
-export function OfferCard({ offer, index }: { offer: Offer; index: number }) {
+/** `level` : niveau du titre de la carte, pour garder une hiérarchie sans saut (h1 → h2 → h3). */
+export function OfferCard({ offer, index, level = 3 }: { offer: Offer; index: number; level?: 2 | 3 }) {
+  const Heading = level === 2 ? "h2" : "h3";
   return (
     <Link
       href={`/offres/${offer.slug}`}
       className={`group flex min-h-[340px] flex-col gap-4 p-8 transition-transform hover:-translate-y-1 rounded-theme ${offerStyles[index % offerStyles.length]}`}
     >
-      <h3 className="font-display text-3xl md:text-4xl">{offer.title}</h3>
+      <Heading className="font-display text-3xl md:text-4xl">{offer.title}</Heading>
       <p className="font-accent text-xl opacity-90">{offer.kicker}</p>
       <p className="leading-relaxed opacity-85">{offer.summary}</p>
       <p className="kicker mt-auto">
@@ -46,11 +48,12 @@ export function OfferCard({ offer, index }: { offer: Offer; index: number }) {
   );
 }
 
-export function ProjectCard({ project }: { project: Project }) {
+export function ProjectCard({ project, level = 3 }: { project: Project; level?: 2 | 3 }) {
+  const Heading = level === 2 ? "h2" : "h3";
   return (
     <Link href={`/realisations/${project.slug}`} className="group flex flex-col gap-3">
       <Media image={project.cover} label={project.title} className="aspect-[4/5]" sizes="(min-width: 768px) 33vw, 100vw" />
-      <h3 className="font-display text-2xl group-hover:underline">{project.title}</h3>
+      <Heading className="font-display text-2xl group-hover:underline">{project.title}</Heading>
       {project.category && <p className="kicker text-muted">{project.category}</p>}
     </Link>
   );

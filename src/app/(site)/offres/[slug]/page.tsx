@@ -15,7 +15,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const offer = await getOffer(slug);
   if (!offer) return {};
-  return { title: offer.title, description: `${offer.kicker} ${offer.summary}` };
+  return {
+    title: offer.seoTitle ?? offer.title,
+    description: offer.seoDescription ?? `${offer.kicker} ${offer.summary}`,
+  };
 }
 
 export default async function OfferPage({ params }: Props) {
@@ -44,12 +47,12 @@ export default async function OfferPage({ params }: Props) {
 
       <section className="mx-auto grid max-w-7xl gap-12 px-5 py-20 md:grid-cols-[1fr_1.4fr] md:px-8">
         <div className="flex flex-col gap-4">
-          <p className="kicker text-brand">Pour qui</p>
+          <h2 className="kicker text-brand">Pour qui</h2>
           <p className="font-display text-3xl leading-tight md:text-4xl">{offer.audience}</p>
           <Link href="/contact" className="btn btn-primary mt-4 self-start">Je veux cette offre</Link>
         </div>
         <div className="flex flex-col gap-4">
-          <p className="kicker text-brand">Ce qui est inclus</p>
+          <h2 className="kicker text-brand">Ce qui est inclus</h2>
           <ul className="grid gap-x-8 sm:grid-cols-2">
             {offer.includes.map((item) => (
               <li key={item} className="border-b border-line py-3 text-lg">

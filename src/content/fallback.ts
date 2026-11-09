@@ -20,9 +20,9 @@ export const settings: Settings = {
     pinterest: "https://fr.pinterest.com/margotcr/",
   },
   seo: {
-    title: "ERA Agency · Agence d'image de marque à Angers et La Rochelle",
+    title: "ERA · Agence d'image de marque à Angers et La Rochelle",
     description:
-      "ERA construit l'identité qui te ressemble : personal branding, rebranding, direction artistique, shootings et stratégie Instagram.",
+      "ERA construit l'identité qui te ressemble : personal branding, rebranding, direction artistique, shootings et stratégie Instagram, à Angers et La Rochelle.",
   },
 };
 
@@ -66,6 +66,9 @@ export const offers: Offer[] = [
       "Plan d'action",
     ],
     format: "Prestation unique",
+    seoTitle: "ERA Identity : personal branding sur-mesure",
+    seoDescription:
+      "ERA Identity : construis ton personal branding avec une méthode sur-mesure. Positionnement, direction artistique, stratégie Instagram et plan d'action.",
   },
   {
     title: "ERA Brand",
@@ -87,6 +90,9 @@ export const offers: Offer[] = [
       "Plan de développement",
     ],
     format: "Prestation unique",
+    seoTitle: "ERA Brand : rebranding de marques et commerces",
+    seoDescription:
+      "ERA Brand : le rebranding haut de gamme pour ta marque, ta boutique ou ton restaurant. Audit, storytelling, univers visuel et stratégie réseaux sociaux.",
   },
   {
     title: "ERA Studio",
@@ -104,6 +110,9 @@ export const offers: Offer[] = [
       "Recherche de prestataires",
     ],
     format: "Sur devis",
+    seoTitle: "ERA Studio : shooting photo et projets créatifs",
+    seoDescription:
+      "ERA Studio : un shooting photo ou un lancement de produit ? Concept créatif, moodboard, direction artistique, stylisme et organisation, sur devis.",
   },
   {
     title: "ERA Brain",
@@ -121,6 +130,9 @@ export const offers: Offer[] = [
       "Idées de communication hors média",
     ],
     format: "Accompagnement mensuel",
+    seoTitle: "ERA Brain : accompagnement mensuel de ta marque",
+    seoDescription:
+      "ERA Brain : chaque mois, une visio stratégique, un calendrier éditorial et des idées de contenus pour appliquer ton image de marque et rester inoubliable.",
   },
 ];
 
@@ -161,6 +173,30 @@ export const pages: Record<string, Page> = {
       "Les informations envoyées via le formulaire de contact servent uniquement à répondre à ta demande. Elles ne sont ni revendues ni utilisées à d'autres fins.",
       "Tu peux demander l'accès, la rectification ou la suppression de tes données en écrivant à contact@era-agence.com.",
       "[Texte complet à valider avant la mise en ligne.]",
+    ],
+  },
+  accessibilite: {
+    title: "Déclaration d'accessibilité",
+    slug: "accessibilite",
+    fallbackText: [
+      "ERA s'engage à rendre son site internet accessible à toutes et à tous, quels que soient le matériel, le logiciel, la langue ou les capacités de chacun.",
+      "Cette déclaration d'accessibilité s'applique au site era-agence.com [adresse définitive à confirmer].",
+      "## État de conformité",
+      "Le site n'a pas encore fait l'objet d'un audit de conformité. Il est donc, à ce jour, non conforme au sens du référentiel général d'amélioration de l'accessibilité (RGAA), version 4.1.2. Un audit est prévu après la mise en ligne.",
+      "## Normes de référence",
+      "RGAA 4.1.2 : référentiel français d'accessibilité numérique, fondé sur les WCAG 2.1.",
+      "WCAG 2.2, niveau AA : règles pour l'accessibilité des contenus web du W3C, publiées comme norme internationale ISO/IEC 40500:2025.",
+      "EN 301 549 : norme européenne d'exigences d'accessibilité pour les produits et services numériques.",
+      "## Ce qui est déjà mis en place",
+      "Structure des titres hiérarchisée (un seul titre principal par page), lien d'évitement « Aller au contenu », navigation possible au clavier avec un indicateur de focus visible, menu mobile annoncé aux lecteurs d'écran, textes alternatifs obligatoires sur les images, contrastes de couleurs vérifiés, formulaire avec étiquettes et messages d'erreur explicites, respect du réglage « réduire les animations » du système, langue de la page déclarée en français.",
+      "## Technologies utilisées",
+      "HTML5, CSS, JavaScript (React et Next.js).",
+      "## Établissement de cette déclaration",
+      "Cette déclaration a été établie le 9 novembre 2026. Elle sera mise à jour après l'audit de conformité.",
+      "## Retour d'information et contact",
+      "Si tu n'arrives pas à accéder à un contenu ou à un service, écris à contact@era-agence.com : nous te proposerons une alternative accessible ou le contenu sous une autre forme.",
+      "## Voies de recours",
+      "Si tu as signalé un défaut d'accessibilité sans obtenir de réponse satisfaisante, tu peux contacter le Défenseur des droits : par le formulaire en ligne sur defenseurdesdroits.fr, par un délégué près de chez toi, ou par courrier gratuit sans affranchissement à Défenseur des droits, Libre réponse 71120, 75342 Paris CEDEX 07.",
     ],
   },
 };
