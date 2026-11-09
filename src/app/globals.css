@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+/*
+ * Trois directions artistiques, choisies dans Sanity (Réglages du site).
+ * Chaque thème redéfinit les mêmes variables : les composants ne changent pas.
+ */
+@theme inline {
+  --color-paper: var(--paper);
+  --color-soft: var(--soft);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-brand: var(--brand);
+  --color-deep: var(--deep);
+  --color-accent: var(--accent);
+  --color-on-deep: var(--on-deep);
+}
+
+:root,
+[data-theme="velours"] {
+  --paper: #f4ede4;
+  --soft: #ede2d6;
+  --ink: #1a1213;
+  --muted: #4a3b3d;
+  --line: #c9a9a0;
+  --brand: #4a0e17;
+  --deep: #2b070c;
+  --accent: #e8b4bc;
+  --on-deep: #f4ede4;
+  --display-font: var(--font-italiana), Georgia, serif;
+  --display-transform: none;
+  --accent-font: var(--font-cormorant), Georgia, serif;
+  --body-font: var(--font-jost), system-ui, sans-serif;
+  --kicker-font: var(--font-jost), system-ui, sans-serif;
+  --kicker-transform: uppercase;
+  --kicker-tracking: 0.2em;
+  --radius: 0px;
+  --btn-radius: 0px;
+}
+
+[data-theme="cherry"] {
+  --paper: #fff6ef;
+  --soft: #f6c6d0;
+  --ink: #2b070c;
+  --muted: #5a0f1b;
+  --line: #e9a3b2;
+  --brand: #b3122e;
+  --deep: #5a0f1b;
+  --accent: #f6c6d0;
+  --on-deep: #fff6ef;
+  --display-font: var(--font-anton), Impact, sans-serif;
+  --display-transform: uppercase;
+  --accent-font: var(--font-pinyon), cursive;
+  --body-font: var(--font-dmsans), system-ui, sans-serif;
+  --kicker-font: var(--font-spacemono), monospace;
+  --kicker-transform: none;
+  --kicker-tracking: 0;
+  --radius: 24px;
+  --btn-radius: 999px;
+}
+
+[data-theme="carnet"] {
+  --paper: #efe8dc;
+  --soft: #fbf8f2;
+  --ink: #1c1a17;
+  --muted: #5a5248;
+  --line: #d2c5b0;
+  --brand: #6b1424;
+  --deep: #1c1a17;
+  --accent: #d9a7b0;
+  --on-deep: #efe8dc;
+  --display-font: var(--font-caslon), Georgia, serif;
+  --display-transform: none;
+  --accent-font: var(--font-caslon), Georgia, serif;
+  --body-font: var(--font-caslon), Georgia, serif;
+  --kicker-font: var(--font-spacemono), monospace;
+  --kicker-transform: lowercase;
+  --kicker-tracking: 0;
+  --radius: 0px;
+  --btn-radius: 0px;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body-font);
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .font-display {
+    font-family: var(--display-font);
+    text-transform: var(--display-transform);
+    font-weight: 400;
+  }
+  .font-accent {
+    font-family: var(--accent-font);
+    font-style: italic;
+  }
+  .kicker {
+    font-family: var(--kicker-font);
+    text-transform: var(--kicker-transform);
+    letter-spacing: var(--kicker-tracking);
+    font-size: 0.8125rem;
+  }
+  .rounded-theme {
+    border-radius: var(--radius);
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 3rem;
+    padding: 0.875rem 1.75rem;
+    border-radius: var(--btn-radius);
+    font-family: var(--kicker-font);
+    text-transform: var(--kicker-transform);
+    letter-spacing: var(--kicker-tracking);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: opacity 150ms, background-color 150ms;
+  }
+  .btn:hover {
+    opacity: 0.88;
+  }
+  .btn-accent {
+    background: var(--accent);
+    color: var(--deep);
+  }
+  .btn-primary {
+    background: var(--brand);
+    color: var(--on-deep);
+  }
+  .btn-outline {
+    border: 1px solid currentColor;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
