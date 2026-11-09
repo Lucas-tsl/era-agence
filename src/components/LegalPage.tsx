@@ -12,7 +12,9 @@ export async function LegalPage({ slug }: { slug: string }) {
         {page.body ? (
           <PortableText value={page.body} />
         ) : (
-          page.fallbackText?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)
+          page.fallbackText?.map((paragraph) =>
+            paragraph.startsWith("## ") ? <h2 key={paragraph}>{paragraph.slice(3)}</h2> : <p key={paragraph}>{paragraph}</p>,
+          )
         )}
       </div>
     </section>

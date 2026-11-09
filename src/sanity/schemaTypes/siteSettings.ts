@@ -48,8 +48,8 @@ export const siteSettings = defineType({
       type: "object",
       group: "seo",
       fields: [
-        defineField({ name: "title", title: "Titre Google", type: "string", validation: (rule) => rule.max(65) }),
-        defineField({ name: "description", title: "Description Google", type: "text", rows: 3, validation: (rule) => rule.max(160) }),
+        defineField({ name: "title", title: "Titre Google", type: "string", description: "Idéalement 50 à 60 caractères.", validation: (rule) => [rule.min(30).warning("Un peu court."), rule.max(60).warning("Au-delà de 60 caractères, Google coupe le titre.")] }),
+        defineField({ name: "description", title: "Description Google", type: "text", rows: 3, description: "Idéalement 140 à 160 caractères.", validation: (rule) => [rule.min(120).warning("Un peu court."), rule.max(160).warning("Au-delà de 160 caractères, Google coupe la description.")] }),
       ],
     }),
   ],

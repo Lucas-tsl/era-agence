@@ -16,12 +16,12 @@ export const homeQuery = defineQuery(`*[_type == "homePage"][0]{
 }`);
 
 export const offersQuery = defineQuery(`*[_type == "offer"] | order(order asc){
-  title, "slug": slug.current, kicker, audience, summary, includes, format, price,
+  title, "slug": slug.current, kicker, audience, summary, includes, format, price, seoTitle, seoDescription,
   "image": image${image}
 }`);
 
 export const offerQuery = defineQuery(`*[_type == "offer" && slug.current == $slug][0]{
-  title, "slug": slug.current, kicker, audience, summary, includes, format, price,
+  title, "slug": slug.current, kicker, audience, summary, includes, format, price, seoTitle, seoDescription,
   "image": image${image}
 }`);
 

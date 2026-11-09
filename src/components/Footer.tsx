@@ -50,9 +50,10 @@ export function Footer({ settings, offers }: { settings: Settings; offers: Offer
           <p>
             © {year} {settings.name} · {settings.tagline}
           </p>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
             <Link href="/mentions-legales" className="hover:underline">Mentions légales</Link>
             <Link href="/confidentialite" className="hover:underline">Confidentialité</Link>
+            <Link href="/accessibilite" className="hover:underline">Accessibilité : non conforme</Link>
           </div>
         </div>
       </div>

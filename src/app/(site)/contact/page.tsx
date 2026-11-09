@@ -4,8 +4,9 @@ import { getOffers, getSettings } from "@/content";
 import { ContactForm } from "./ContactForm";
 
 export const metadata: Metadata = {
-  title: "Contact",
-  description: "Une question, un projet ? Prends rendez-vous pour un appel découverte avec ERA.",
+  title: "Contact et rendez-vous découverte gratuit",
+  description:
+    "Une question, un projet de personal branding ou de rebranding ? Écris à ERA ou réserve ton appel découverte gratuit. Réponse sous 48 h, partout en France.",
 };
 
 export default async function ContactPage() {
