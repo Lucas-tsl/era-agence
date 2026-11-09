@@ -22,14 +22,19 @@ if (!projectId || !token) {
 const client = createClient({ projectId, dataset, token, apiVersion: "2026-11-01", useCdn: false });
 const key = (index: number) => `k${index}`;
 
+/** Les lignes commençant par « ## » deviennent des intertitres (h2). */
 const paragraphs = (texts: string[] = []) =>
-  texts.map((text, index) => ({
-    _type: "block",
-    _key: key(index),
-    style: "normal",
-    markDefs: [],
-    children: [{ _type: "span", _key: `${key(index)}s`, text, marks: [] }],
-  }));
+  texts.map((line, index) => {
+    const heading = line.startsWith("## ");
+    const text = heading ? line.slice(3) : line;
+    return {
+      _type: "block",
+      _key: key(index),
+      style: heading ? "h2" : "normal",
+      markDefs: [],
+      children: [{ _type: "span", _key: `${key(index)}s`, text, marks: [] }],
+    };
+  });
 
 type SeedDocument = { _id: string; _type: string } & Record<string, unknown>;
 
@@ -62,6 +67,8 @@ const documents: SeedDocument[] = [
     summary: offer.summary,
     includes: offer.includes,
     format: offer.format,
+    seoTitle: (offer as { seoTitle?: string }).seoTitle,
+    seoDescription: (offer as { seoDescription?: string }).seoDescription,
     order: index + 1,
   })),
   ...faq.map((item, index) => ({ _id: `faq-${index + 1}`, _type: "faq", ...item, order: index + 1 })),
