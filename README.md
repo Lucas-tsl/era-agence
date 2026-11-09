@@ -22,8 +22,13 @@ Sans projet Sanity configuré, le site fonctionne avec le **contenu de secours**
 1. Créer le projet : `npx sanity@latest init --env .env.local` (ou sur [sanity.io/manage](https://www.sanity.io/manage)), dataset `production`.
 2. Renseigner `NEXT_PUBLIC_SANITY_PROJECT_ID` et `NEXT_PUBLIC_SANITY_DATASET` dans `.env.local` et dans les variables d'environnement Vercel.
 3. Dans Sanity › API › CORS origins, ajouter `http://localhost:3000` et l'URL du site (avec « Allow credentials »).
-4. Ouvrir `/studio`, remplir **Réglages du site**, **Page d'accueil** et les **Offres**.
-5. Webhook de mise à jour instantanée : Sanity › API › Webhooks › URL `https://<site>/api/revalidate`, déclencheur création/mise à jour/suppression, projection `{_type}`, secret = `SANITY_REVALIDATE_SECRET`.
+4. Importer le contenu actuel (réglages, accueil, offres, FAQ, pages légales) : créer un jeton « Editor » dans Sanity › API › Tokens, puis
+   ```bash
+   NEXT_PUBLIC_SANITY_PROJECT_ID=xxx SANITY_API_WRITE_TOKEN=yyy npm run seed
+   ```
+   Les documents déjà présents ne sont pas écrasés (`npm run seed -- --force` pour tout remplacer). Supprimer le jeton ensuite.
+5. Ouvrir `/studio` et compléter (photos, prix, réalisations, avis).
+6. Webhook de mise à jour instantanée : Sanity › API › Webhooks › URL `https://<site>/api/revalidate`, déclencheur création/mise à jour/suppression, projection `{_type}`, secret = `SANITY_REVALIDATE_SECRET`.
 
 Sans webhook, le contenu se met à jour au plus tard au bout d'une heure (cache `hours`).
 
