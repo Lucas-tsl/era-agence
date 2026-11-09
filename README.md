@@ -23,7 +23,7 @@ Sans projet Sanity configuré, le site fonctionne avec le **contenu de secours**
 2. Renseigner `NEXT_PUBLIC_SANITY_PROJECT_ID` et `NEXT_PUBLIC_SANITY_DATASET` dans `.env.local` et dans les variables d'environnement Vercel.
 3. Dans Sanity › API › CORS origins, ajouter `http://localhost:3000` et l'URL du site (avec « Allow credentials »).
 4. Ouvrir `/studio`, remplir **Réglages du site**, **Page d'accueil** et les **Offres**.
-5. Webhook de mise à jour instantanée : Sanity › API › Webhooks › URL `https://<site>/api/revalidate`, déclencheur création/mise à jour/suppression, projection `{_type}`, secret = `SANITY_REVALIDATE_SECRET`.
+6. Webhook de mise à jour instantanée : Sanity › API › Webhooks › URL `https://<site>/api/revalidate`, déclencheur création/mise à jour/suppression, projection `{_type}`, secret = `SANITY_REVALIDATE_SECRET`.
 
 Sans webhook, le contenu se met à jour au plus tard au bout d'une heure (cache `hours`).
 
