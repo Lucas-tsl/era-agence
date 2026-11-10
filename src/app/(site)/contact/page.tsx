@@ -22,7 +22,7 @@ export default async function ContactPage() {
           <p className="max-w-md text-lg opacity-90">
             Pour toute question ou un rendez-vous découverte, écris-moi. Je réponds sous 48 h.
           </p>
-          <a href={`mailto:${settings.email}`} className="font-accent text-2xl hover:underline">
+          <a href={`mailto:${settings.email}`} className="link-underline font-accent text-2xl">
             {settings.email}
           </a>
           {settings.bookingUrl && (

@@ -17,9 +17,9 @@ export function Footer({ settings, offers }: { settings: Settings; offers: Offer
 
           <nav aria-label="Pied de page" className="flex flex-col gap-3">
             <p className="kicker text-accent">Navigation</p>
-            <Link href="/" className="hover:underline">Accueil</Link>
+            <Link href="/" className="link-underline self-start">Accueil</Link>
             {navigation.map((item) => (
-              <Link key={item.href} href={item.href} className="hover:underline">
+              <Link key={item.href} href={item.href} className="link-underline self-start">
                 {item.label}
               </Link>
             ))}
@@ -28,7 +28,7 @@ export function Footer({ settings, offers }: { settings: Settings; offers: Offer
           <div className="flex flex-col gap-3">
             <p className="kicker text-accent">Les offres</p>
             {offers.map((offer) => (
-              <Link key={offer.slug} href={`/offres/${offer.slug}`} className="hover:underline">
+              <Link key={offer.slug} href={`/offres/${offer.slug}`} className="link-underline self-start">
                 {offer.title}
               </Link>
             ))}
@@ -36,7 +36,7 @@ export function Footer({ settings, offers }: { settings: Settings; offers: Offer
 
           <div className="flex flex-col gap-3">
             <p className="kicker text-accent">Contact</p>
-            <a href={`mailto:${settings.email}`} className="hover:underline">
+            <a href={`mailto:${settings.email}`} className="link-underline self-start">
               {settings.email}
             </a>
             <p className="opacity-85">{settings.locations}</p>
@@ -51,9 +51,9 @@ export function Footer({ settings, offers }: { settings: Settings; offers: Offer
             © {year} {settings.name} · {settings.tagline}
           </p>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
-            <Link href="/mentions-legales" className="hover:underline">Mentions légales</Link>
-            <Link href="/confidentialite" className="hover:underline">Confidentialité</Link>
-            <Link href="/accessibilite" className="hover:underline">Accessibilité : non conforme</Link>
+            <Link href="/mentions-legales" className="link-underline self-start">Mentions légales</Link>
+            <Link href="/confidentialite" className="link-underline self-start">Confidentialité</Link>
+            <Link href="/accessibilite" className="link-underline self-start">Accessibilité : non conforme</Link>
           </div>
         </div>
       </div>
