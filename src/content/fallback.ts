@@ -33,7 +33,7 @@ export const home: Home = {
   heroText:
     "Ton agence créative et humaine. On construit l'identité qui te ressemble, et on t'aide à l'appliquer partout.",
   // Photos tirées des comptes Instagram de Margot, à remplacer par les photos HD dans Sanity.
-  heroImage: { url: "/images/tailleur-bordeaux.jpg", alt: "Tailleur bordeaux et cravate rayée", w: 563, h: 340 },
+  heroImage: { url: "/images/margot-chemise-blanche.jpg", alt: "Margot en chemise blanche, bras levés, dans la lumière du soleil", w: 1125, h: 1500 },
   methodTitle: "Trois temps, une nouvelle ère",
   steps: [
     { title: "On comprend ton besoin", text: "Grâce à un questionnaire personnalisé, on part de toi, de ton histoire et de tes envies." },
@@ -43,7 +43,7 @@ export const home: Home = {
   aboutTitle: "Une enfant rêveuse devenue fondatrice",
   aboutText:
     "Je m'appelle Margot. Formée à la communication, au marketing et au management de la mode et du luxe chez Mod'Art International, j'ai vécu mille vies : défilés de la Fashion Week Haute Couture, Festival de Cannes, Milan, création d'événements. ERA réunit tout ce que j'aime : la créativité, la mode, l'organisation et la communication.",
-  aboutImage: { url: "/images/margot-chemise-blanche.jpg", alt: "Portrait de Margot en chemise blanche, fondatrice d'ERA", w: 1125, h: 1500 },
+  aboutImage: { url: "/images/margot-bras-croises.jpg", alt: "Portrait de Margot, fondatrice d'ERA, bras croisés près d'une fenêtre", w: 640, h: 800 },
   ctaTitle: "Prête pour ta new era ?",
   ctaText: "Pour toute question ou un rendez-vous découverte, écris-moi.",
 };
