@@ -33,7 +33,7 @@ export const home: Home = {
   heroText:
     "Ton agence créative et humaine. On construit l'identité qui te ressemble, et on t'aide à l'appliquer partout.",
   // Photos tirées des comptes Instagram de Margot, à remplacer par les photos HD dans Sanity.
-  heroImage: { url: "/images/margot-chemise-blanche.jpg", alt: "Margot en chemise blanche, bras levés, dans la lumière du soleil", w: 1125, h: 1500 },
+  heroImage: { url: "/images/margot-detouree.png", alt: "Margot en chemise blanche, bras levés", w: 433, h: 577 },
   methodTitle: "Trois temps, une nouvelle ère",
   steps: [
     { title: "On comprend ton besoin", text: "Grâce à un questionnaire personnalisé, on part de toi, de ton histoire et de tes envies." },
