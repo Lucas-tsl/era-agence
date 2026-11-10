@@ -118,21 +118,84 @@ body {
     letter-spacing: var(--kicker-tracking);
     font-size: 0.875rem;
     font-weight: 500;
-    transition: opacity 150ms, background-color 150ms;
+    /* Remplissage qui balaie le bouton de gauche à droite au survol. */
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 0% 100%;
+    transition:
+      background-size 450ms var(--ease-out),
+      color 300ms var(--ease-out),
+      border-color 300ms var(--ease-out),
+      transform 200ms var(--ease-out);
   }
-  .btn:hover {
-    opacity: 0.88;
+  .btn:hover,
+  .btn:focus-visible {
+    background-size: 100% 100%;
+  }
+  .btn:active {
+    transform: scale(0.97);
   }
   .btn-accent {
-    background: var(--accent);
+    background-color: var(--accent);
+    background-image: linear-gradient(var(--on-deep), var(--on-deep));
     color: var(--deep);
   }
   .btn-primary {
-    background: var(--brand);
+    background-color: var(--brand);
+    background-image: linear-gradient(var(--deep), var(--deep));
     color: var(--on-deep);
   }
   .btn-outline {
     border: 1px solid currentColor;
+    background-image: linear-gradient(var(--on-deep), var(--on-deep));
+  }
+  .btn-outline:hover,
+  .btn-outline:focus-visible {
+    color: var(--deep);
+    border-color: var(--on-deep);
+  }
+
+  /* Soulignement qui se dessine au survol, et reste sur la page en cours. */
+  .link-underline {
+    position: relative;
+  }
+  .link-underline::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: -0.35em;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 450ms var(--ease-out);
+  }
+  .link-underline:hover::after,
+  .link-underline:focus-visible::after,
+  .link-underline[aria-current="page"]::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  /* Flèche qui glisse au survol de son lien (classe `group` sur le lien). */
+  .arrow {
+    display: inline-block;
+    transition: transform 400ms var(--ease-out);
+  }
+  .group:hover .arrow,
+  .group:focus-visible .arrow {
+    transform: translateX(0.35em);
+  }
+}
+
+:root {
+  --ease-out: cubic-bezier(0.22, 0.75, 0.2, 1);
+  --ease-curtain: cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
   }
 }
 
@@ -141,8 +204,159 @@ body {
   outline-offset: 3px;
 }
 
+/* ——— Entrée du haut de page : CSS seul, joue dès le chargement ——— */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.75rem);
+  }
+}
+@keyframes unveil {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+}
+@keyframes settle {
+  from {
+    transform: scale(1.14);
+  }
+}
+@keyframes spin {
+  to {
+    rotate: 360deg;
+  }
+}
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.75rem);
+  }
+}
+.anim-rise {
+  animation: rise 1s var(--ease-out) both;
+  animation-delay: var(--d, 0ms);
+}
+.anim-unveil {
+  animation: unveil 1.3s var(--ease-curtain) both;
+  animation-delay: var(--d, 0ms);
+}
+.anim-unveil img {
+  animation: settle 1.9s var(--ease-out) both;
+  animation-delay: var(--d, 0ms);
+}
+.anim-spin {
+  animation: spin 22s linear infinite;
+}
+.anim-menu {
+  animation: menu-in 450ms var(--ease-out) both;
+  animation-delay: var(--d, 0ms);
+}
+
+/* ——— Apparitions au défilement (activées par ScrollReveal) ——— */
+.reveal-ready [data-reveal] {
+  transition:
+    opacity 900ms var(--ease-out) var(--d, 0ms),
+    transform 900ms var(--ease-out) var(--d, 0ms),
+    clip-path 1.2s var(--ease-curtain) var(--d, 0ms);
+}
+.reveal-ready [data-reveal]:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(1.75rem);
+}
+/* Le rideau est porté par le contenu, pas par le cadre observé :
+   un cadre entièrement masqué ne serait jamais détecté à l'écran. */
+.reveal-ready [data-reveal="unveil"]:not(.is-visible) {
+  opacity: 1;
+  transform: none;
+}
+.reveal-ready [data-reveal="unveil"]:not(.is-visible) {
+  background: transparent;
+}
+.reveal-ready [data-reveal="unveil"] > * {
+  transition:
+    clip-path 1.2s var(--ease-curtain) var(--d, 0ms),
+    transform 1.6s var(--ease-out) var(--d, 0ms);
+}
+.reveal-ready [data-reveal="unveil"]:not(.is-visible) > * {
+  clip-path: inset(100% 0 0 0);
+  transform: scale(1.14);
+}
+/* Trait qui se dessine au-dessus de chaque étape de la méthode. */
+.reveal-line {
+  position: relative;
+}
+.reveal-line::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 1px;
+  background: var(--brand);
+  transform-origin: left;
+  transition: transform 1.1s var(--ease-curtain) calc(var(--d, 0ms) + 150ms);
+}
+.reveal-ready .reveal-line:not(.is-visible)::before {
+  transform: scaleX(0);
+}
+
+/* ——— Bandeau défilant ——— */
+.marquee > div {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+.marquee-row {
+  display: flex;
+  flex-shrink: 0;
+  gap: 2.5rem;
+  padding-right: 2.5rem;
+  white-space: nowrap;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ——— Barre de progression de lecture sous l'en-tête (navigateurs compatibles) ——— */
+.scroll-progress {
+  display: none;
+}
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    display: block;
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 2px;
+    background: var(--accent);
+    transform-origin: left;
+    animation: progress linear both;
+    animation-timeline: scroll(root);
+  }
+}
+@keyframes progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Réglage « réduire les animations » : tout s'affiche directement, rien ne bouge. */
 @media (prefers-reduced-motion: reduce) {
-  * {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
     transition: none !important;
   }
 }

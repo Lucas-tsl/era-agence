@@ -35,7 +35,7 @@ export function SocialLinks({ social, className = "" }: { social: Settings["soci
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`${labels[key]} (nouvel onglet)`}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-current/30 transition-colors hover:border-current"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-current/30 transition-[border-color,transform,background-color] duration-300 hover:-translate-y-0.5 hover:border-current hover:bg-current/10"
           >
             {icons[key]}
           </a>

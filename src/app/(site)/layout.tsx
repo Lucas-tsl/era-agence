@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "../globals.css";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { ScrollReveal } from "@/components/ScrollReveal";
 import { getOffers, getSettings } from "@/content";
 import { siteUrl } from "@/lib/site";
 import { fontVariables } from "../fonts";
@@ -31,6 +32,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
           {children}
         </main>
         <Footer settings={settings} offers={offers} />
+        <ScrollReveal />
       </body>
     </html>
   );
